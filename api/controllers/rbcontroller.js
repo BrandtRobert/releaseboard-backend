@@ -26,6 +26,7 @@ exports.update_release = function (req, res) {
     if (err) {
       res.send(err)
     }
+    // release._id = req.params.id
     res.json(release)
   })
 }
