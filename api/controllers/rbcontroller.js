@@ -22,11 +22,13 @@ exports.create_release = function (req, res) {
 }
 
 exports.update_release = function (req, res) {
-  Release.findOneAndUpdate(req.params.id, req.body, {new: true}, function (err, release) {
+  Release.findOneAndUpdate({_id: req.params.id}, req.body, {
+    returnNewDocument: true
+  },
+  function (err, release) {
     if (err) {
       res.send(err)
     }
-    // release._id = req.params.id
     res.json(release)
   })
 }
